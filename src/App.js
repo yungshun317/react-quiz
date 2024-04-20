@@ -4,6 +4,7 @@ import Main from "./Main";
 import {useEffect, useReducer} from "react";
 import Loader from "./Loader";
 import Error from "./Error";
+import StartScreen from "./StartScreen";
 
 const initialState = {
     questions: [],
@@ -67,7 +68,7 @@ export default function App() {
             <Main>
                 {status === "loading" && <Loader />}
                 {status === "error" && <Error />}
-                {status === "ready" && <Error />}
+                {status === "ready" && <StartScreen />}
             </Main>
         </div>
     )
