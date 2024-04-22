@@ -48,6 +48,8 @@ function reducer(state, action) {
             };
         case "nextQuestion":
             return { ...state, index: state.index + 1, answer: null };
+        case "finish":
+            return { ...state, status: "finished" }
         default:
             throw new Error("Action unknown");
     }
@@ -98,7 +100,7 @@ export default function App() {
                     <>
                         <Progress index={index} numQuestions={numQuestions} points={points} maxPossiblePoints={maxPossiblePoints} answer={answer} />
                         <Question question={questions[index]} dispatch={dispatch} answer={answer} />
-                        <NextButton dispatch={dispatch} answer={answer} />
+                        <NextButton dispatch={dispatch} answer={answer} numQuestions={numQuestions} index={index} />
                     </>
                 )}
                 {status === "finished" && <FinishScreen points={points} maxPossiblePoints={maxPossiblePoints} />}
